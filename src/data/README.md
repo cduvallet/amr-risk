@@ -6,4 +6,4 @@ map_to_card.sh : maps all genomes to the CARD database using their RGI command l
 
 rgi_wrapper.sh : wrapper that map_to_card.sh calls.
 
-clean_rgi_reports.sh : this grabs all the Strict hits, adds the genome name as a new column, and concatenates them all. Don't run it multiple times bc it just appends to the existing file name!
+clean_rgi_reports.sh : this grabs all the Strict hits, adds the genome name as a new column, and concatenates them all. 
