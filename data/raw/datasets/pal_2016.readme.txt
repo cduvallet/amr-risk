@@ -1,0 +1,29 @@
+# Study metadata
+
+environment: river, lake
+selective_pressure: yes, pharmaceutical contamination
+n_samples: 4
+sample_detail: 4 newly sequenced lake/river samples from India	
+authors: Chandan Pal, Johan Bengtsson-Palme, Erik Kristiansson and D. G. Joakim Larsson 
+year: 2016
+paper_tilte: The structure and diversity of human, animal and environmental resistomes 
+paper_link: https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-016-0199-5 
+data: MG-RAST 4701431.3, 4701422.3, 4701429.3, 4701417.3 
+data_link: https://www.mg-rast.org/mgmain.html?mgpage=project&project=mgp18323 
+metadata: MG-RAST
+
+# Downloading data 
+
+Following these directions: ftp://ftp.metagenomics.anl.gov/projects/README.ftp
+
+> e.g. download the original uploaded sequence file:
+>   http://api.metagenomics.anl.gov//download/mgm4440442.4?file=050.1
+
+So I did:
+
+wget http://api.metagenomics.anl.gov/download/mgm4701410.3?file=050.1
+
+Ughhh ok need to come back to this.
+
+Note: my notes say to only download four of these, but I don't see the other samples anywhere in my spreadsheet.
+Look for the dataset with the other samples, to decide whether to donwload those as well or not!

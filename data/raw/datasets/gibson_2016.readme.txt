@@ -1,0 +1,44 @@
+# Study metadata
+
+environment: human_fecal
+selective pressure: yes, abx (before and after antibiotic exposure)
+n sample: 401 (84 preterm infants sampled longitudinally and with different abx usage)
+authors: Molly K. Gibson, Bin Wang, Sara Ahmadi, Carey-Ann D. Burnham, Phillip I. Tarr, Barbara B. Warner & Gautam Dantas 
+year: 2016 
+paper: Developmental dynamics of the preterm infant gut microbiota and antibiotic resistome
+paper link: https://www.nature.com/articles/nmicrobiol201624 
+data: SRA, PRJNA301903
+data link: https://www.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA301903&go=go
+metadata: SRA and Table S1
+
+# Downloading data
+
+The SRA Run Table metadata seems to label every other sample as having 'PAIRED' or 'SINGLE' layout,
+but if I click on these samples to see the details, it looks like all of them have two reads per spot...
+
+e.g. this sample is PAIRED: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?run=SRR3132489
+and this one is SINGLE: https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?run=SRR3132490
+
+But the PAIRED sample has 100% of spots with paired reads, whereas the SINGLE sample has only 15% of spots with a pair...
+
+Also, note that this data includes WGS as well as 16S, and (I think) functional metagenomics libraries (samples labeled FMG, with `Assay Type` `OTHER`).
+
+```ipython
+Assay_Type
+AMPLICON    124
+OTHER       182
+WGS         800
+
+# Checking that the 'OTHER' is just functional metagenomics samples
+df.query('Assay_Type == "OTHER"')['Library_Name'].str.split('_').str[0].unique()
+array(['FMG'], dtype=object)
+```
+
+Okay, let's only use the WGS samples. I'm not sure why some samples are labeled as SINGLE
+but then have a few reverse reads - let's split spots for all of these data...
+
+```bash
+grep WGS gibson_2016.sraruntable.txt | cut -f 13 > gibson_2016.accession_list.txt
+while read a; do fastq-dump --accession $a --split-files --outdir gibson_2016/; done < gibson_2016.accession_list.txt 
+```
+

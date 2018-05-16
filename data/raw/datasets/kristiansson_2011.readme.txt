@@ -1,0 +1,22 @@
+# Study metadata
+
+environment: river
+selective_pressure: yes, upstream and downstream of pharma
+n_samples: 8
+sample_details: 6 samples upstream and downstream Indian WWTP receiving waste from pharmaceutical manufacturers, 2 samples upstream/downstream WWTP in Sweden
+authors: Erik Kristiansson, Jerker Fick, Anders Janzon, Roman Grabic, Carolin Rutgersson, Birgitta Weijdegård, Hanna Söderström, D. G. Joakim Larsson
+year: 2011
+paper title: Pyrosequencing of antibiotic-contaminated river sediments reveals high levels of resistance and gene transfer elements 
+paper link: http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0017038#s3 
+data: SRA SRP002078 
+data link: https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP002078&go=go 
+metadata: SRA
+
+# Downloading data
+
+Get accession list and download. It's 454 data so no need to split files.
+
+```
+cut -f 7 kristiansson_2011.sraruntable.txt | tail -n +2 > kristiansson_2011.accession_list.txt
+while read a; do fastq-dump --accession $a --outdir kristiansson_2011/; done < kristiansson_2011.accession_list.txt
+```

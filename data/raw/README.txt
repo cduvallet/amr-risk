@@ -8,3 +8,5 @@ I got the tree directly from Mathieu via email (subject line: tree) on
 
 The raw genomes are also from the BN10 bucket, and are stored on the 
 almlab node in ~/users/lab/bn10_genomes.
+
+The data in rgi_mapped was made by scripts in src/data.
